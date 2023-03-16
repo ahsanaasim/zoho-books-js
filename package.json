@@ -1,11 +1,15 @@
 {
   "name": "zoho-books-js",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Zoho Books Node Package",
+  "main": "build/index.js",
   "scripts": {
     "start:dev": "npx nodemon",
     "build": "tsc",
+    "prepare": "npm run build",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint": "tslint -p tsconfig.json",
     "test": "mocha -r ts-node/register src/**/*.test.ts",
