@@ -1,25 +1,19 @@
+import { IRefreshToken } from '@interfaces/IRefreshToken';
 import axios from 'axios';
-import { baseAuthUrl, zoho } from '../config/config';
+import { baseAuthUrl, getAxiosConfig, zoho } from '@config/config';
+import { IError } from '@interfaces/IError';
 
 export class OAuth {
   authenticationUrl: string = baseAuthUrl + 'token';
 
-  public async refresh(refreshToken: string): Promise<any> {
+  public async refresh(refreshToken: string): Promise<IRefreshToken | IError> {
     const data = {
       client_id: zoho.clientId,
       grant_type: 'refresh_token',
       client_secret: zoho.clientSecret,
       refresh_token: refreshToken,
     };
-    const config = {
-      method: 'post',
-      maxBodyLength: Infinity,
-      url: this.authenticationUrl,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      data: data,
-    };
+    const config = getAxiosConfig('post', this.authenticationUrl, data);
     return new Promise(function (resolve, reject) {
       axios(config)
         .then(function (response) {

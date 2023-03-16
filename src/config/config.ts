@@ -4,3 +4,15 @@ export var zoho = {
   clientId: '',
   clientSecret: '',
 };
+
+export const getAxiosConfig = (method: string, url: string, data: any) => {
+  return {
+    method: method,
+    maxBodyLength: Infinity,
+    url: url,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    data: data,
+  };
+};
