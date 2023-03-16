@@ -16,12 +16,12 @@ export class OAuth {
     const config = getAxiosConfig('post', this.authenticationUrl, {}, data, {
       'Content-Type': 'application/x-www-form-urlencoded',
     });
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
       axios(config)
-        .then(function (response) {
+        .then((response) => {
           resolve(response.data);
         })
-        .catch(function (error) {
+        .catch((error) => {
           reject(error);
         });
     });

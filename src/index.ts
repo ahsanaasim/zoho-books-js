@@ -1,4 +1,4 @@
-import { zoho } from "./config/config";
+import { zoho } from './config/config';
 
 export const Zoho = (clientId: string, clientSecret: string) => {
   zoho.clientId = clientId;
