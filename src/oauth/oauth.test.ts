@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { ZohoConfig } from 'src/config/zoho-config';
+import { ZohoConfig } from '../config/zoho-config';
 import { Zoho } from '..';
 import { IError } from '../interfaces/IError';
 import { IRefreshToken } from '../interfaces/IRefreshToken';
