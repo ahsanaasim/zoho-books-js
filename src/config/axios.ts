@@ -29,11 +29,11 @@ export const AxiosContentTypes = {
 };
 
 export const getHeaders = (token: string, contentType: string) => {
-  var header: IAxiosHeader = {
+  const header: IAxiosHeader = {
     'Content-Type': 'application/x-www-form-urlencoded',
   };
   if (token) {
-    header['Authorization'] = 'Bearer ' + token;
+    header.Authorization = 'Bearer ' + token;
   }
 
   if (contentType) {
