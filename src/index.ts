@@ -1,8 +1,12 @@
 import { zoho } from './config/config';
-export { OAuth } from './oauth/oauth';
-export { ChartOfAccounts } from './chartofaccounts/chartofaccounts';
+import { OAuth } from './oauth/oauth';
+import { ChartOfAccounts } from './chartofaccounts/chartofaccounts';
 
-export const Zoho = (clientId: string, clientSecret: string) => {
-  zoho.clientId = clientId;
-  zoho.clientSecret = clientSecret;
+export const Zoho = {
+  init: (clientId: string, clientSecret: string) => {
+    zoho.clientId = clientId;
+    zoho.clientSecret = clientSecret;
+  },
+  OAuth: OAuth,
+  ChartOfAccounts: ChartOfAccounts,
 };
