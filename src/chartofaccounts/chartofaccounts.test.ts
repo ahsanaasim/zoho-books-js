@@ -57,17 +57,18 @@ describe('Chart of Accounts', () => {
   });
 
   it('Update Success', async () => {
+    const updateName = (Math.random() + 1).toString(36).substring(7) + ' UAcc';
     const data = await new ChartOfAccounts().update(
       zoho.accessToken,
       accountId,
       { organization_id: organizationId },
       {
-        account_name: 'Updated Name',
+        account_name: updateName,
         account_type: 'income',
       },
     );
     expect(data.message).to.equal('The details of the account have been updated.');
-    expect(data.chart_of_account.account_name).to.equal('Updated Name');
+    expect(data.chart_of_account.account_name).to.equal(updateName);
   });
 
   it('Get One Success', async () => {
