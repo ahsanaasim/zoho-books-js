@@ -5,14 +5,3 @@ export let zoho = {
   clientSecret: '',
   accessToken: '',
 };
-
-export const getAxiosConfig = (method: string, url: string, params: any, data: any, headers: any) => {
-  return {
-    method,
-    maxBodyLength: Infinity,
-    url,
-    headers,
-    params,
-    data,
-  };
-};

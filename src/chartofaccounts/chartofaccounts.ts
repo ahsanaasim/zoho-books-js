@@ -1,17 +1,21 @@
-import axios, { AxiosError } from 'axios';
-import { baseUrl, getAxiosConfig } from '../config/config';
+import { AxiosError } from 'axios';
+import { AxiosContentTypes, AxiosMethods, AxiosRequest, IRequestData } from '../config/axios';
+import { baseUrl } from '../config/config';
 
 export class ChartOfAccounts {
   chartOfAccountsUrl: string = baseUrl + 'chartofaccounts';
 
   public async getOne(token: string, id: string, params: any): Promise<any> {
-    const headers = {
-      Authorization: 'Bearer ' + token,
-      'Content-Type': 'application/x-www-form-urlencoded',
+    const requestData: IRequestData = {
+      token: token,
+      url: this.chartOfAccountsUrl + '/' + id,
+      method: AxiosMethods.get,
+      contentType: '',
+      params: params,
+      body: undefined,
     };
-    const config = getAxiosConfig('get', this.chartOfAccountsUrl + '/' + id, params, {}, headers);
     return new Promise((resolve, reject) => {
-      axios(config)
+      AxiosRequest(requestData)
         .then(
           (response) => {
             resolve(response.data);
@@ -27,16 +31,19 @@ export class ChartOfAccounts {
   }
 
   public async get(token: string, organizationId: string): Promise<any> {
-    const headers = {
-      Authorization: 'Bearer ' + token,
-      'Content-Type': 'application/x-www-form-urlencoded',
+    const requestData: IRequestData = {
+      token: token,
+      url: this.chartOfAccountsUrl,
+      method: AxiosMethods.get,
+      contentType: AxiosContentTypes.urlencoded,
+      params: {
+        organization_id: organizationId,
+      },
+      body: undefined,
     };
-    const params = {
-      organization_id: organizationId,
-    };
-    const config = getAxiosConfig('get', this.chartOfAccountsUrl, params, {}, headers);
+
     return new Promise((resolve, reject) => {
-      axios(config)
+      AxiosRequest(requestData)
         .then(
           (response) => {
             resolve(response.data);
@@ -52,13 +59,16 @@ export class ChartOfAccounts {
   }
 
   public async post(token: string, data: any): Promise<any> {
-    const headers = {
-      Authorization: 'Bearer ' + token,
-      'Content-Type': 'application/json',
+    const requestData: IRequestData = {
+      token: token,
+      url: this.chartOfAccountsUrl,
+      method: AxiosMethods.post,
+      contentType: AxiosContentTypes.json,
+      params: undefined,
+      body: data,
     };
-    const config = getAxiosConfig('post', this.chartOfAccountsUrl, {}, data, headers);
     return new Promise((resolve, reject) => {
-      axios(config)
+      AxiosRequest(requestData)
         .then(
           (response) => {
             resolve(response.data);
@@ -74,13 +84,16 @@ export class ChartOfAccounts {
   }
 
   public async update(token: string, id: string, params: any, data: any): Promise<any> {
-    const headers = {
-      Authorization: 'Bearer ' + token,
-      'Content-Type': 'application/json',
+    const requestData: IRequestData = {
+      token: token,
+      url: this.chartOfAccountsUrl + '/' + id,
+      method: AxiosMethods.put,
+      contentType: AxiosContentTypes.json,
+      params: params,
+      body: data,
     };
-    const config = getAxiosConfig('put', this.chartOfAccountsUrl + '/' + id, params, data, headers);
     return new Promise((resolve, reject) => {
-      axios(config)
+      AxiosRequest(requestData)
         .then(
           (response) => {
             resolve(response.data);
@@ -96,13 +109,16 @@ export class ChartOfAccounts {
   }
 
   public async delete(token: string, id: string, params: any): Promise<any> {
-    const headers = {
-      Authorization: 'Bearer ' + token,
-      'Content-Type': 'application/x-www-form-urlencoded',
+    const requestData: IRequestData = {
+      token: token,
+      url: this.chartOfAccountsUrl + '/' + id,
+      method: AxiosMethods.delete,
+      contentType: AxiosContentTypes.urlencoded,
+      params: params,
+      body: undefined,
     };
-    const config = getAxiosConfig('delete', this.chartOfAccountsUrl + '/' + id, params, {}, headers);
     return new Promise((resolve, reject) => {
-      axios(config)
+      AxiosRequest(requestData)
         .then(
           (response) => {
             resolve(response.data);

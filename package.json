@@ -13,7 +13,8 @@
     "postversion": "git push && git push --tags",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "lint": "tslint -p tsconfig.json",
-    "test": "mocha -r ts-node/register src/**/*.test.ts",
+    "test": "mocha --timeout 5000 -r ts-node/register src/**/*.test.ts",
+    "test-single": "mocha --timeout 5000 -r ts-node/register",
     "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test"
   },
   "repository": {
