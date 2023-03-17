@@ -7,11 +7,11 @@ export class ChartOfAccounts {
 
   public async getOne(token: string, id: string, params: any): Promise<any> {
     const requestData: IRequestData = {
-      token: token,
+      token,
       url: this.chartOfAccountsUrl + '/' + id,
       method: AxiosMethods.get,
       contentType: '',
-      params: params,
+      params,
       body: undefined,
     };
     return new Promise((resolve, reject) => {
@@ -32,7 +32,7 @@ export class ChartOfAccounts {
 
   public async get(token: string, organizationId: string): Promise<any> {
     const requestData: IRequestData = {
-      token: token,
+      token,
       url: this.chartOfAccountsUrl,
       method: AxiosMethods.get,
       contentType: AxiosContentTypes.urlencoded,
@@ -60,7 +60,7 @@ export class ChartOfAccounts {
 
   public async post(token: string, data: any): Promise<any> {
     const requestData: IRequestData = {
-      token: token,
+      token,
       url: this.chartOfAccountsUrl,
       method: AxiosMethods.post,
       contentType: AxiosContentTypes.json,
@@ -85,11 +85,11 @@ export class ChartOfAccounts {
 
   public async update(token: string, id: string, params: any, data: any): Promise<any> {
     const requestData: IRequestData = {
-      token: token,
+      token,
       url: this.chartOfAccountsUrl + '/' + id,
       method: AxiosMethods.put,
       contentType: AxiosContentTypes.json,
-      params: params,
+      params,
       body: data,
     };
     return new Promise((resolve, reject) => {
@@ -110,11 +110,11 @@ export class ChartOfAccounts {
 
   public async delete(token: string, id: string, params: any): Promise<any> {
     const requestData: IRequestData = {
-      token: token,
+      token,
       url: this.chartOfAccountsUrl + '/' + id,
       method: AxiosMethods.delete,
       contentType: AxiosContentTypes.urlencoded,
-      params: params,
+      params,
       body: undefined,
     };
     return new Promise((resolve, reject) => {
