@@ -7,6 +7,6 @@ export const Zoho = {
     zoho.clientId = clientId;
     zoho.clientSecret = clientSecret;
   },
-  OAuth: OAuth,
-  ChartOfAccounts: ChartOfAccounts,
+  OAuth,
+  ChartOfAccounts,
 };
