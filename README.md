@@ -17,6 +17,14 @@
 </a>
 
 </p>
-# zoho-books-js
 
 
+## Description
+
+Zoho Books JS is a wrapper for Zoho Books official API. It has ready made functions for all the APIs of Zoho Books according to their documentation. Check the test files for examples. Also, read the official [API documentation](https://www.zoho.com/books/api/v3/introduction/#overview) of Zoho Books for more details.
+
+## Installation
+
+```
+$ npm install zoho-books-js
+```
