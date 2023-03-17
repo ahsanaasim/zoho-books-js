@@ -2,7 +2,8 @@
   "name": "zoho-books-js",
   "version": "1.0.2",
   "description": "Zoho Books Node Package",
-  "main": "build/index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "start:dev": "npx nodemon",
     "build": "tsc",
@@ -19,6 +20,9 @@
     "type": "git",
     "url": "git+https://github.com/ahsanaasim/zoho-books-js.git"
   },
+  "files": [
+    "lib/**/*"
+  ],
   "keywords": [
     "zoho"
   ],
