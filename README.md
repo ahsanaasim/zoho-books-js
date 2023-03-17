@@ -1,3 +1,6 @@
+<p align="center">
+<img src="zoho.png" width="120" alt="Nest Logo" />
+</p>
 <p align="center">A <a href="http://nodejs.org" target="blank">Node.js</a> wrapper for Zoho Books API.</p>
 
 <p align="center">
