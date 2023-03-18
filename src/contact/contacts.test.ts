@@ -140,8 +140,8 @@ describe('Contacts', () => {
       );
       expect(data.message).to.satisfy(
         (message: string) =>
-          message == 'Statement has been sent to the customer.' ||
-          message == "The mail count in this plan has reached today's limit of 50 mails.",
+          message === 'Statement has been sent to the customer.' ||
+          message === "The mail count in this plan has reached today's limit of 50 mails.",
       );
     }
   });
@@ -170,8 +170,8 @@ describe('Contacts', () => {
       );
       expect(data.message).to.satisfy(
         (message: string) =>
-          message == 'Email has been sent.' ||
-          message == "The mail count in this plan has reached today's limit of 50 mails.",
+          message === 'Email has been sent.' ||
+          message === "The mail count in this plan has reached today's limit of 50 mails.",
       );
     }
   });
