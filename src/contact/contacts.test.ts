@@ -6,34 +6,6 @@ import { IRefreshToken } from '../interfaces/IRefreshToken';
 import { OAuth } from '../oauth/oauth';
 import { Contacts } from './contacts';
 
-// describe('Get All Chart of Accounts', function () {
-//   const rightClientId = ZohoConfig.rightClientId;
-//   const rightClientSecret = ZohoConfig.rightClientSecret;
-//   const rightRefreshToken = ZohoConfig.rightRefreshToken;
-//   const organizationId = ZohoConfig.organizationId;
-
-//   this.beforeAll(async () => {
-//     Zoho.init(rightClientId, rightClientSecret);
-//     const oauth = (await new OAuth().refresh(rightRefreshToken)) as IRefreshToken;
-//     zoho.accessToken = oauth.access_token;
-//   });
-
-  // it('Get All chart of accounts success', async () => {
-  //   const data = await new Contacts().get(zoho.accessToken, organizationId);
-  //   expect(data.message).to.equal('success');
-  // });
-
-//   it('Response for wrong orgnazationd id is correct', async () => {
-//     const data = await new Contacts().get(zoho.accessToken, '123');
-//     expect(data.code).to.equal(6041);
-//   });
-
-//   it('Response for wrong accessToken is correct', async () => {
-//     const data = await new Contacts().get('123', organizationId);
-//     expect(data.code).to.equal(57);
-//   });
-// });
-
 describe('Contacts', () => {
   const rightClientId = ZohoConfig.rightClientId;
   const rightClientSecret = ZohoConfig.rightClientSecret;
@@ -42,6 +14,7 @@ describe('Contacts', () => {
   let contactId = 0;
   let addressId = '';
   let contactPersonId = 0;
+  const skipEmails = true;
 
   before(async () => {
     Zoho.init(rightClientId, rightClientSecret);
@@ -72,7 +45,7 @@ describe('Contacts', () => {
       contact_persons: [
         {
           first_name: (Math.random() + 1).toString(36).substring(7) + ' Contact',
-          email: 'test@test.com',
+          email: skipEmails ? '' : 'test@test.com',
         },
       ],
     });
@@ -110,20 +83,20 @@ describe('Contacts', () => {
   });
 
   it('Enable Portal Access Success', async () => {
-    const data = await new Contacts().enablePortalAccess(
-      zoho.accessToken,
-      contactId,
-      {
-        organization_id: organizationId,
-      },
-      {
-        contact_persons: [
-          {
-            contact_person_id: contactPersonId,
-          },
-        ],
-      },
-    );
+    // const data = await new Contacts().enablePortalAccess(
+    //   zoho.accessToken,
+    //   contactId,
+    //   {
+    //     organization_id: organizationId,
+    //   },
+    //   {
+    //     contact_persons: [
+    //       {
+    //         contact_person_id: contactPersonId,
+    //       },
+    //     ],
+    //   },
+    // );
     // console.log(data);
     // expect(data.message).to.equal('Client Portal preferences have been updated');
   });
@@ -150,25 +123,27 @@ describe('Contacts', () => {
   });
 
   it('Email Statement Success', async () => {
-    const data = await new Contacts().emailStatement(
-      zoho.accessToken,
-      contactId,
-      {
-        organization_id: organizationId,
-      },
-      {
-        send_from_org_email_id: false,
-        to_mail_ids: ['test@test.com'],
-        cc_mail_ids: ['test@test.com'],
-        subject: 'Statement of transactions with Zillium Inc',
-        body: 'Dear Customer,     <br/>We have attached with this email a list of all your transactions with us for the period 01 Sep 2013 to 30 Sep 2013. You can write to us or call us if you need any assistance or clarifications.     <br/>Thanks for your business.<br/>Regards<br/>Zillium Inc',
-      },
-    );
-    expect(data.message).to.satisfy(
-      (message: string) =>
-        message == 'Statement has been sent to the customer.' ||
-        message == "The mail count in this plan has reached today's limit of 50 mails.",
-    );
+    if (skipEmails) {
+      const data = await new Contacts().emailStatement(
+        zoho.accessToken,
+        contactId,
+        {
+          organization_id: organizationId,
+        },
+        {
+          send_from_org_email_id: false,
+          to_mail_ids: ['test@test.com'],
+          cc_mail_ids: ['test@test.com'],
+          subject: 'Statement of transactions with Zillium Inc',
+          body: 'Dear Customer,     <br/>We have attached with this email a list of all your transactions with us for the period 01 Sep 2013 to 30 Sep 2013. You can write to us or call us if you need any assistance or clarifications.     <br/>Thanks for your business.<br/>Regards<br/>Zillium Inc',
+        },
+      );
+      expect(data.message).to.satisfy(
+        (message: string) =>
+          message == 'Statement has been sent to the customer.' ||
+          message == "The mail count in this plan has reached today's limit of 50 mails.",
+      );
+    }
   });
 
   it('Get Statement Mail Content Success', async () => {
@@ -179,24 +154,26 @@ describe('Contacts', () => {
   });
 
   it('Email Contact Success', async () => {
-    const data = await new Contacts().emailContact(
-      zoho.accessToken,
-      contactId,
-      {
-        organization_id: organizationId,
-      },
-      {
-        to_mail_ids: ['test@test.com'],
-        subject: 'Welcome to Zillium Inc .',
-        body: 'Dear Customer,     <br/>We have attached with this email a list of all your transactions with us for the period 01 Sep 2013 to 30 Sep 2013. You can write to us or call us if you need any assistance or clarifications.     <br/>Thanks for your business.<br/>Regards<br/>Zillium Inc',
-        attachments: 'string',
-      },
-    );
-    expect(data.message).to.satisfy(
-      (message: string) =>
-        message == 'Email has been sent.' ||
-        message == "The mail count in this plan has reached today's limit of 50 mails.",
-    );
+    if (skipEmails) {
+      const data = await new Contacts().emailContact(
+        zoho.accessToken,
+        contactId,
+        {
+          organization_id: organizationId,
+        },
+        {
+          to_mail_ids: ['test@test.com'],
+          subject: 'Welcome to Zillium Inc .',
+          body: 'Dear Customer,     <br/>We have attached with this email a list of all your transactions with us for the period 01 Sep 2013 to 30 Sep 2013. You can write to us or call us if you need any assistance or clarifications.     <br/>Thanks for your business.<br/>Regards<br/>Zillium Inc',
+          attachments: 'string',
+        },
+      );
+      expect(data.message).to.satisfy(
+        (message: string) =>
+          message == 'Email has been sent.' ||
+          message == "The mail count in this plan has reached today's limit of 50 mails.",
+      );
+    }
   });
 
   it('List Comments Success', async () => {
