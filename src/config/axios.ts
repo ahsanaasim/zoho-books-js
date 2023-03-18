@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
 const axiosManager = {};
 
@@ -53,7 +53,7 @@ export const getAxiosConfig = (method: string, url: string, params: any, data: a
   };
 };
 
-export const AxiosRequest = (data: IRequestData): Promise<AxiosResponse<any, any>> => {
+export const AxiosRequest = (data: IRequestData, resolve: any, reject: any): Promise<void> => {
   const config = getAxiosConfig(
     data.method,
     data.url,
@@ -62,5 +62,16 @@ export const AxiosRequest = (data: IRequestData): Promise<AxiosResponse<any, any
     getHeaders(data.token, data.contentType),
   );
 
-  return axios(config);
+  return axios(config)
+    .then(
+      (response) => {
+        resolve(response.data);
+      },
+      (error) => {
+        resolve(error.response.data);
+      },
+    )
+    .catch((error: AxiosError) => {
+      reject(error.response);
+    });
 };

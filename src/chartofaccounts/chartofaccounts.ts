@@ -1,4 +1,3 @@
-import { AxiosError } from 'axios';
 import { AxiosContentTypes, AxiosMethods, AxiosRequest, IRequestData } from '../config/axios';
 import { baseUrl } from '../config/config';
 
@@ -15,18 +14,7 @@ export class ChartOfAccounts {
       body: undefined,
     };
     return new Promise((resolve, reject) => {
-      AxiosRequest(requestData)
-        .then(
-          (response) => {
-            resolve(response.data);
-          },
-          (error) => {
-            resolve(error.response.data);
-          },
-        )
-        .catch((error: AxiosError) => {
-          reject(error.response);
-        });
+      AxiosRequest(requestData, resolve, reject);
     });
   }
 
@@ -43,18 +31,7 @@ export class ChartOfAccounts {
     };
 
     return new Promise((resolve, reject) => {
-      AxiosRequest(requestData)
-        .then(
-          (response) => {
-            resolve(response.data);
-          },
-          (error) => {
-            resolve(error.response.data);
-          },
-        )
-        .catch((error: AxiosError) => {
-          reject(error.response);
-        });
+      AxiosRequest(requestData, resolve, reject);
     });
   }
 
@@ -68,18 +45,7 @@ export class ChartOfAccounts {
       body: data,
     };
     return new Promise((resolve, reject) => {
-      AxiosRequest(requestData)
-        .then(
-          (response) => {
-            resolve(response.data);
-          },
-          (error) => {
-            resolve(error.response.data);
-          },
-        )
-        .catch((error: AxiosError) => {
-          reject(error.response);
-        });
+      AxiosRequest(requestData, resolve, reject);
     });
   }
 
@@ -93,18 +59,7 @@ export class ChartOfAccounts {
       body: data,
     };
     return new Promise((resolve, reject) => {
-      AxiosRequest(requestData)
-        .then(
-          (response) => {
-            resolve(response.data);
-          },
-          (error) => {
-            resolve(error.response.data);
-          },
-        )
-        .catch((error: AxiosError) => {
-          reject(error.response);
-        });
+      AxiosRequest(requestData, resolve, reject);
     });
   }
 
@@ -118,18 +73,7 @@ export class ChartOfAccounts {
       body: undefined,
     };
     return new Promise((resolve, reject) => {
-      AxiosRequest(requestData)
-        .then(
-          (response) => {
-            resolve(response.data);
-          },
-          (error) => {
-            resolve(error.response.data);
-          },
-        )
-        .catch((error: AxiosError) => {
-          reject(error.response);
-        });
+      AxiosRequest(requestData, resolve, reject);
     });
   }
 }
