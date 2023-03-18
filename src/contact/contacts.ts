@@ -1,4 +1,4 @@
-import { IContactResponse } from '../interfaces/IContact';
+import { IContactResponse, IContactsResponse } from '../interfaces/IContact';
 import { AxiosContentTypes, AxiosMethods, AxiosRequest, IRequestData } from '../config/axios';
 import { baseUrl } from '../config/config';
 import { IGeneralResponse } from '../interfaces/IGeneralResponse';
@@ -24,7 +24,7 @@ export class Contacts {
     });
   }
 
-  public async get(token: string, organizationId: string): Promise<any> {
+  public async get(token: string, organizationId: string): Promise<IContactsResponse> {
     const requestData: IRequestData = {
       token,
       url: this.contactsUrl,
