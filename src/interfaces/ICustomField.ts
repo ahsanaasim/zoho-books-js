@@ -1,5 +1,5 @@
 export interface ICustomField {
-    index: number
-    value: string
-    label: string
-  }
+  index: number;
+  value: string;
+  label: string;
+}
