@@ -63,3 +63,9 @@ export interface IContactResponse {
   message: string;
   contact: IContact;
 }
+
+export interface IContactsResponse {
+  code: number;
+  message: string;
+  contacts: IContact[];
+}

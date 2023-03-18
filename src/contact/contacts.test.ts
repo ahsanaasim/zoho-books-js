@@ -18,10 +18,10 @@ import { Contacts } from './contacts';
 //     zoho.accessToken = oauth.access_token;
 //   });
 
-//   it('Get All chart of accounts success', async () => {
-//     const data = await new Contacts().get(zoho.accessToken, organizationId);
-//     expect(data.message).to.equal('success');
-//   });
+  // it('Get All chart of accounts success', async () => {
+  //   const data = await new Contacts().get(zoho.accessToken, organizationId);
+  //   expect(data.message).to.equal('success');
+  // });
 
 //   it('Response for wrong orgnazationd id is correct', async () => {
 //     const data = await new Contacts().get(zoho.accessToken, '123');
@@ -47,6 +47,21 @@ describe('Contacts', () => {
     Zoho.init(rightClientId, rightClientSecret);
     const oauth = (await new OAuth().refresh(rightRefreshToken)) as IRefreshToken;
     zoho.accessToken = oauth.access_token;
+  });
+
+  it('Get All chart of accounts success', async () => {
+    const data = await new Contacts().get(zoho.accessToken, organizationId);
+    expect(data.message).to.equal('success');
+  });
+
+  it('Response for wrong organization is correct', async () => {
+    const data = await new Contacts().get(zoho.accessToken, '123');
+    expect(data.code).to.equal(6041);
+  });
+
+  it('Response for wrong accessToken is correct', async () => {
+    const data = await new Contacts().get('123', organizationId);
+    expect(data.code).to.equal(57);
   });
 
   it('Create Success', async () => {
