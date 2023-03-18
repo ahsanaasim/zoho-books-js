@@ -6,7 +6,7 @@
     "outDir": "./lib",
     "strict": true,
     "rootDir": "./src",
-    "baseUrl": "./",
+    "baseUrl": "./"
   },
   "include": [
     "src"
