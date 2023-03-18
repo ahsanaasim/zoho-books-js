@@ -38,6 +38,11 @@ jobs:
         flag-name: run-${{ join(matrix.*, '-') }}
         parallel: true
 
+    - name: Run codacy-coverage-reporter
+      uses: codacy/codacy-coverage-reporter-action@v1
+      with:
+        project-token: 515ea430584946098c4dc933ad9959fe
+
   finish:
     needs: test
     if: ${{ always() }}
