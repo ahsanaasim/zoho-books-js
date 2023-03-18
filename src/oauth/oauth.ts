@@ -22,13 +22,7 @@ export class OAuth {
     };
 
     return new Promise((resolve, reject) => {
-      return AxiosRequest(requestData)
-        .then((response) => {
-          resolve(response.data);
-        })
-        .catch((error) => {
-          reject(error);
-        });
+      AxiosRequest(requestData, resolve, reject);
     });
   }
 }
