@@ -1,5 +1,4 @@
 export interface IGeneralResponse {
-    code: number
-    message: string
-  }
-  
+  code: number;
+  message: string;
+}

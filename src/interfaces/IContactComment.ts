@@ -1,4 +1,4 @@
-import { IPageContext } from "./IPageContext";
+import { IPageContext } from './IPageContext';
 
 export interface IContactComment {
   comment_id: number;
