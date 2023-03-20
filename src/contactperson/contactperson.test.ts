@@ -14,9 +14,7 @@ describe('Contact Person', () => {
   const rightRefreshToken = ZohoConfig.rightRefreshToken;
   const organizationId = ZohoConfig.organizationId;
   let contactId = 0;
-  let addressId = '';
   let contactPersonId = 0;
-  const skipEmails = true;
 
   before(async () => {
     Zoho.init(rightClientId, rightClientSecret);
@@ -61,7 +59,7 @@ describe('Contact Person', () => {
       first_name: 'Will',
       last_name: 'Smith',
     });
-    
+
     const contactPerson = data as IContactPersonResponse;
     contactPersonId = contactPerson.contact_person.contact_person_id;
     expect(data.message).to.equal("Contact person's information has been saved.");
@@ -77,7 +75,7 @@ describe('Contact Person', () => {
         first_name: updateName,
       },
     );
-    expect(data.message).to.equal('Contact person\'s information has been saved.');
+    expect(data.message).to.equal("Contact person's information has been saved.");
     expect(data.contact_person.first_name).to.equal(updateName);
   });
 
@@ -89,11 +87,9 @@ describe('Contact Person', () => {
   });
 
   it('Mark as primary contact person Success', async () => {
-    const data = await new ContactPerson().markAsPrimaryContactPerson(
-      zoho.accessToken,
-      contactPersonId,
-      { organization_id: organizationId },
-    );
+    const data = await new ContactPerson().markAsPrimaryContactPerson(zoho.accessToken, contactPersonId, {
+      organization_id: organizationId,
+    });
     expect(data.message).to.equal('This contact person has been marked as your primary contact person.');
   });
 

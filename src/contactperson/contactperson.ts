@@ -93,7 +93,6 @@ export class ContactPerson {
     });
   }
 
-  
   public async markAsPrimaryContactPerson(token: string, id: number, params: any): Promise<IGeneralResponse> {
     return new Promise((resolve, reject) => {
       AxiosRequest(
