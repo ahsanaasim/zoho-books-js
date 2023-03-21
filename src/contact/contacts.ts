@@ -1,5 +1,5 @@
 import { IContactResponse, IContactsResponse } from '../interfaces/IContact';
-import { AxiosContentTypes, AxiosMethods, AxiosRequest, IRequestData } from '../config/axios';
+import { AxiosContentTypes, AxiosDelete, AxiosMethods, AxiosRequest, IRequestData } from '../config/axios';
 import { baseUrl } from '../config/config';
 import { IGeneralResponse } from '../interfaces/IGeneralResponse';
 import { IEmailStatementResponse } from '../interfaces/IEmailStatement';
@@ -82,18 +82,7 @@ export class Contacts {
 
   public async delete(token: string, id: number, params: any): Promise<any> {
     return new Promise((resolve, reject) => {
-      AxiosRequest(
-        {
-          token,
-          url: this.contactsUrl + '/' + id,
-          method: AxiosMethods.delete,
-          contentType: AxiosContentTypes.urlencoded,
-          params,
-          body: undefined,
-        },
-        resolve,
-        reject,
-      );
+      AxiosDelete(this.contactsUrl + '/' + id, token, params, resolve, reject);
     });
   }
 
