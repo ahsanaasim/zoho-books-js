@@ -38,3 +38,8 @@ $ npm install zoho-books-js
 - [x] All APIs of Chart of Accounts
 - [x] All APIs of Contacts
 - [x] All APIs of Contact Person
+
+
+### Contribution is Appreciated
+
+If anyone wants to contribute in this library, feel free to create an issue to start a conversation.
