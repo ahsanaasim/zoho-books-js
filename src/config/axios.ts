@@ -75,3 +75,14 @@ export const AxiosRequest = (data: IRequestData, resolve: any, reject: any): Pro
       reject(error.response);
     });
 };
+
+export const AxiosDelete = (url: string, token: string, params: any, resolve: any, reject: any): Promise<void> => {
+  return AxiosRequest({
+    token,
+    url: url,
+    method: AxiosMethods.delete,
+    contentType: AxiosContentTypes.urlencoded,
+    params,
+    body: undefined
+  }, resolve, reject);
+};

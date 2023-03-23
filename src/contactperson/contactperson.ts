@@ -1,4 +1,4 @@
-import { AxiosContentTypes, AxiosMethods, AxiosRequest, IRequestData } from '../config/axios';
+import { AxiosContentTypes, AxiosDelete, AxiosMethods, AxiosRequest, IRequestData } from '../config/axios';
 import { baseUrl } from '../config/config';
 import { IGeneralResponse } from '../interfaces/IGeneralResponse';
 import { IContactPersonResponse, IContactPersonsResponse } from '../interfaces/IContactPerson';
@@ -78,18 +78,7 @@ export class ContactPerson {
 
   public async delete(token: string, id: number, params: any): Promise<IGeneralResponse> {
     return new Promise((resolve, reject) => {
-      AxiosRequest(
-        {
-          token,
-          url: this.contactPersonUrl + '/' + id,
-          method: AxiosMethods.delete,
-          contentType: AxiosContentTypes.urlencoded,
-          params,
-          body: undefined,
-        },
-        resolve,
-        reject,
-      );
+      AxiosDelete(this.contactPersonUrl + '/' + id, token, params, resolve, reject);
     });
   }
 
