@@ -79,7 +79,7 @@ export const AxiosRequest = (data: IRequestData, resolve: any, reject: any): Pro
 export const AxiosDelete = (url: string, token: string, params: any, resolve: any, reject: any): Promise<void> => {
   return AxiosRequest({
     token,
-    url: url,
+    url,
     method: AxiosMethods.delete,
     contentType: AxiosContentTypes.urlencoded,
     params,
