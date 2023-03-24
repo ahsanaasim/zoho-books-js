@@ -20,9 +20,6 @@ describe('Contact Person', () => {
     Zoho.init(rightClientId, rightClientSecret);
     const oauth = (await new OAuth().refresh(rightRefreshToken)) as IRefreshToken;
     zoho.accessToken = oauth.access_token;
-    console.log(zoho)
-    console.log(rightRefreshToken)
-    console.log(oauth)
   });
 
   // it('Get All Contact Persons success', async () => {
