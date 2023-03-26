@@ -12,7 +12,7 @@ describe('Get All Estimates', function () {
   const rightClientSecret = ZohoConfig.rightClientSecret;
   const rightRefreshToken = ZohoConfig.rightRefreshToken;
   const organizationId = ZohoConfig.organizationId;
-  
+
   this.beforeAll(async () => {
     Zoho.init(rightClientId, rightClientSecret);
     const oauth = (await new OAuth().refresh(rightRefreshToken)) as IRefreshToken;
