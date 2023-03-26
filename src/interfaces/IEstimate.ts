@@ -1,0 +1,107 @@
+import { IAddress, IBillingAddress, IShippingAddress } from './IAddress';
+
+export interface IEstimate {
+  estimate_id: string;
+  estimate_number: string;
+  zcrm_potential_id: string;
+  zcrm_potential_name: string;
+  date: string;
+  created_date: string;
+  reference_number: string;
+  status: string;
+  color_code: string;
+  current_sub_status_id: string;
+  current_sub_status: string;
+  sub_statuses: any[];
+  customer_id: string;
+  documents: any[];
+  customer_name: string;
+  is_transaction_created: boolean;
+  is_converted_to_open: boolean;
+  contact_category: string;
+  contact_persons: any[];
+  currency_id: string;
+  currency_code: string;
+  currency_symbol: string;
+  exchange_rate: number;
+  expiry_date: string;
+  discount: number;
+  discount_applied_on_amount: number;
+  is_discount_before_tax: boolean;
+  discount_type: string;
+  is_viewed_by_client: boolean;
+  client_viewed_time: string;
+  is_inclusive_tax: boolean;
+  tax_rounding: string;
+  estimate_url: string;
+  line_items: string[][];
+  submitter_id: string;
+  submitted_date: string;
+  submitted_by: string;
+  submitted_by_name: string;
+  submitted_by_email: string;
+  submitted_by_photo_url: string;
+  approver_id: string;
+  shipping_charge: number;
+  bcy_shipping_charge: number;
+  adjustment: number;
+  bcy_adjustment: number;
+  adjustment_description: string;
+  roundoff_value: number;
+  transaction_rounding_type: string;
+  sub_total: number;
+  bcy_sub_total: number;
+  sub_total_inclusive_of_tax: number;
+  sub_total_exclusive_of_discount: number;
+  discount_total: number;
+  bcy_discount_total: number;
+  discount_percent: number;
+  total: number;
+  bcy_total: number;
+  tax_total: number;
+  bcy_tax_total: number;
+  price_precision: number;
+  taxes: any[];
+  tax_override_preference: string;
+  invoice_ids: any[];
+  billing_address: IBillingAddress;
+  shipping_address: IShippingAddress;
+  customer_default_billing_address: IAddress;
+  notes: string;
+  terms: string;
+  custom_fields: any[];
+  custom_field_hash: any;
+  template_id: string;
+  template_name: string;
+  template_type: string;
+  page_width: string;
+  page_height: string;
+  orientation: string;
+  created_time: string;
+  last_modified_time: string;
+  created_by_id: string;
+  last_modified_by_id: string;
+  contact_persons_details: string[][];
+  salesperson_id: string;
+  salesperson_name: string;
+  attachment_name: string;
+  can_send_in_mail: boolean;
+  can_send_estimate_sms: boolean;
+  allow_partial_payments: boolean;
+  payment_options: any[];
+  retainerinvoices: any[];
+  subject_content: string;
+  approvers_list: any[];
+}
+
+export interface IEstimatesResponse {
+  code: number;
+  message: string;
+  estimates: IEstimate[];
+}
+
+export interface IEstimateResponse {
+  code: number;
+  message: string;
+  estimate: IEstimate;
+}
