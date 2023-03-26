@@ -48,10 +48,14 @@ describe('Chart of Accounts', () => {
   });
 
   it('Create Success', async () => {
-    const data = await new ChartOfAccounts().post(zoho.accessToken, {
-      account_name: (Math.random() + 1).toString(36).substring(7) + ' Acc',
-      account_type: ChartOfAccounts.accountTypes.income,
-    });
+    const data = await new ChartOfAccounts().post(
+      zoho.accessToken,
+      { organization_id: organizationId },
+      {
+        account_name: (Math.random() + 1).toString(36).substring(7) + ' Acc',
+        account_type: ChartOfAccounts.accountTypes.income,
+      },
+    );
     accountId = data.chart_of_account.account_id;
     expect(data.message).to.equal('The account has been created.');
   });

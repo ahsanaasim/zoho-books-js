@@ -54,13 +54,13 @@ export class ChartOfAccounts {
     });
   }
 
-  public async post(token: string, data: any): Promise<any> {
+  public async post(token: string, params: any, data: any): Promise<any> {
     const requestData: IRequestData = {
       token,
       url: this.chartOfAccountsUrl,
       method: AxiosMethods.post,
       contentType: AxiosContentTypes.json,
-      params: undefined,
+      params: params,
       body: data,
     };
     return new Promise((resolve, reject) => {

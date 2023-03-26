@@ -42,7 +42,7 @@ export class ContactPerson {
     });
   }
 
-  public async post(token: string, data: any): Promise<IContactPersonResponse | IGeneralResponse> {
+  public async post(token: string, params: any, data: any): Promise<IContactPersonResponse | IGeneralResponse> {
     return new Promise((resolve, reject) => {
       AxiosRequest(
         {
@@ -50,7 +50,7 @@ export class ContactPerson {
           url: this.contactPersonUrl,
           method: AxiosMethods.post,
           contentType: AxiosContentTypes.json,
-          params: undefined,
+          params: params,
           body: data,
         },
         resolve,
