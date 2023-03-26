@@ -50,7 +50,7 @@ export class ContactPerson {
           url: this.contactPersonUrl,
           method: AxiosMethods.post,
           contentType: AxiosContentTypes.json,
-          params: params,
+          params,
           body: data,
         },
         resolve,

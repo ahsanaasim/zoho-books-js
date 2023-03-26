@@ -60,7 +60,7 @@ export class ChartOfAccounts {
       url: this.chartOfAccountsUrl,
       method: AxiosMethods.post,
       contentType: AxiosContentTypes.json,
-      params: params,
+      params,
       body: data,
     };
     return new Promise((resolve, reject) => {
