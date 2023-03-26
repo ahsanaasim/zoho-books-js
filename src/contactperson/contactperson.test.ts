@@ -46,11 +46,15 @@ describe('Contact Person', () => {
   });
 
   it('Create Contact Person', async () => {
-    const contact = await new Contacts().post(zoho.accessToken, {
-      contact_name: (Math.random() + 1).toString(36).substring(7) + ' Contact',
-      contact_type: 'customer',
-      customer_sub_type: 'business',
-    });
+    const contact = await new Contacts().post(
+      zoho.accessToken,
+      { organization_id: organizationId },
+      {
+        contact_name: (Math.random() + 1).toString(36).substring(7) + ' Contact',
+        contact_type: 'customer',
+        customer_sub_type: 'business',
+      },
+    );
     contactId = contact.contact.contact_id;
     expect(contact.message).to.equal('The contact has been added.');
 
