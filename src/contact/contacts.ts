@@ -54,7 +54,7 @@ export class Contacts {
           url: this.contactsUrl,
           method: AxiosMethods.post,
           contentType: AxiosContentTypes.json,
-          params: params,
+          params,
           body: data,
         },
         resolve,
