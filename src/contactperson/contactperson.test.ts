@@ -62,11 +62,15 @@ describe('Contact Person', () => {
     contactId = contact.contact.contact_id;
     expect(contact.message).to.equal('The contact has been added.');
 
-    const data = await new ContactPerson().post(zoho.accessToken, {
-      contact_id: contactId,
-      first_name: 'Will',
-      last_name: 'Smith',
-    });
+    const data = await new ContactPerson().post(
+      zoho.accessToken,
+      { organization_id: organizationId },
+      {
+        contact_id: contactId,
+        first_name: 'Will',
+        last_name: 'Smith',
+      },
+    );
 
     const contactPerson = data as IContactPersonResponse;
     contactPersonId = contactPerson.contact_person.contact_person_id;
