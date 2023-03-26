@@ -7,6 +7,7 @@ import { OAuth } from '../oauth/oauth';
 import { ContactPerson } from './contactperson';
 import { Contacts } from '../contact/contacts';
 import { IContactPersonResponse } from '../interfaces/IContactPerson';
+import { deleteContact } from '../contact/contact-delete.test';
 
 describe('Contact Person', () => {
   const rightClientId = ZohoConfig.rightClientId;
@@ -111,9 +112,6 @@ describe('Contact Person', () => {
     });
     expect(data.message).to.equal('The contact person has been deleted.');
 
-    const data2 = await new Contacts().delete(zoho.accessToken, contactId, {
-      organization_id: organizationId,
-    });
-    expect(data2.message).to.equal('The contact has been deleted.');
+    deleteContact(contactId, organizationId);
   });
 });

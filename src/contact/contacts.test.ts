@@ -5,6 +5,7 @@ import { zoho } from '../config/config';
 import { IRefreshToken } from '../interfaces/IRefreshToken';
 import { OAuth } from '../oauth/oauth';
 import { Contacts } from './contacts';
+import { deleteContact } from './contact-delete.test';
 
 describe('Contacts', () => {
   const rightClientId = ZohoConfig.rightClientId;
@@ -262,9 +263,6 @@ describe('Contacts', () => {
   });
 
   it('Delete Success', async () => {
-    const data = await new Contacts().delete(zoho.accessToken, contactId, {
-      organization_id: organizationId,
-    });
-    expect(data.message).to.equal('The contact has been deleted.');
+    deleteContact(contactId, organizationId);
   });
 });

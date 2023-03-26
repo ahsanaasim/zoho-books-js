@@ -20,7 +20,7 @@ export class Estimates {
     });
   }
 
-  public async get(token: string, organizationId: string): Promise<any> {
+  public async get(token: string, organizationId: string): Promise<IEstimatesResponse> {
     const requestData: IRequestData = {
       token,
       url: this.estimatesUrl,
