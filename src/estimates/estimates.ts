@@ -1,4 +1,4 @@
-import { IEstimateResponse, IEstimatesResponse } from '../interfaces/IEstimate';
+import { IEstimateResponse } from '../interfaces/IEstimate';
 import { AxiosContentTypes, AxiosMethods, AxiosRequest, IRequestData } from '../config/axios';
 import { baseUrl } from '../config/config';
 import { IGeneralResponse } from '../interfaces/IGeneralResponse';

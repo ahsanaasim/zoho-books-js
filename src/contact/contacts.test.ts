@@ -6,6 +6,13 @@ import { IRefreshToken } from '../interfaces/IRefreshToken';
 import { OAuth } from '../oauth/oauth';
 import { Contacts } from './contacts';
 
+export const deleteContact = async (contactId: number, organizationId: string) => {
+  const data = await new Contacts().delete(zoho.accessToken, contactId, {
+    organization_id: organizationId,
+  });
+  expect(data.message).to.equal('The contact has been deleted.');
+};
+
 describe('Contacts', () => {
   const rightClientId = ZohoConfig.rightClientId;
   const rightClientSecret = ZohoConfig.rightClientSecret;
@@ -262,9 +269,6 @@ describe('Contacts', () => {
   });
 
   it('Delete Success', async () => {
-    const data = await new Contacts().delete(zoho.accessToken, contactId, {
-      organization_id: organizationId,
-    });
-    expect(data.message).to.equal('The contact has been deleted.');
+    deleteContact(contactId, organizationId);
   });
 });

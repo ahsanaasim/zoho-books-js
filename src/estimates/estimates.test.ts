@@ -6,6 +6,7 @@ import { IRefreshToken } from '../interfaces/IRefreshToken';
 import { OAuth } from '../oauth/oauth';
 import { Estimates } from './estimates';
 import { Contacts } from '../contact/contacts';
+import { deleteContact } from '../contact/contacts.test';
 
 describe('Get All Estimates', function () {
   const rightClientId = ZohoConfig.rightClientId;
@@ -24,12 +25,12 @@ describe('Get All Estimates', function () {
     expect(data.message).to.equal('success');
   });
 
-  it('Response for wrong orgnazationd id is correct', async () => {
+  it('Response for wrong orgnazationd id in Estimates is correct', async () => {
     const data = await new Estimates().get(zoho.accessToken, '123');
     expect(data.code).to.equal(6041);
   });
 
-  it('Response for wrong accessToken is correct', async () => {
+  it('Response for wrong accessToken in Estimates is correct', async () => {
     const data = await new Estimates().get('123', organizationId);
     expect(data.code).to.equal(57);
   });
@@ -120,10 +121,7 @@ describe('Estimates', () => {
       });
       expect(data.message).to.equal('The estimate has been deleted.');
 
-      const data2 = await new Contacts().delete(zoho.accessToken, contactId, {
-        organization_id: organizationId,
-      });
-      expect(data2.message).to.equal('The contact has been deleted.');
+      deleteContact(contactId, organizationId);
     });
   });
 });
