@@ -38,10 +38,14 @@ describe('Contact Person', () => {
   // });
 
   it('Create Failure due to invalid customer id', async () => {
-    const data = await new ContactPerson().post(zoho.accessToken, {
-      first_name: 'Will',
-      last_name: 'Smith',
-    });
+    const data = await new ContactPerson().post(
+      zoho.accessToken,
+      { organization_id: organizationId },
+      {
+        first_name: 'Will',
+        last_name: 'Smith',
+      },
+    );
     expect(data.message).to.equal('Invalid value passed for Customer ID');
   });
 
