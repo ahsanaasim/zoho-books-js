@@ -38,17 +38,21 @@ describe('Contacts', () => {
   });
 
   it('Create Success', async () => {
-    const data = await new Contacts().post(zoho.accessToken, {
-      contact_name: (Math.random() + 1).toString(36).substring(7) + ' Contact',
-      contact_type: 'customer',
-      customer_sub_type: 'business',
-      contact_persons: [
-        {
-          first_name: (Math.random() + 1).toString(36).substring(7) + ' Contact',
-          email: skipEmails ? '' : 'test@test.com',
-        },
-      ],
-    });
+    const data = await new Contacts().post(
+      zoho.accessToken,
+      { organization_id: organizationId },
+      {
+        contact_name: (Math.random() + 1).toString(36).substring(7) + ' Contact',
+        contact_type: 'customer',
+        customer_sub_type: 'business',
+        contact_persons: [
+          {
+            first_name: (Math.random() + 1).toString(36).substring(7) + ' Contact',
+            email: skipEmails ? '' : 'test@test.com',
+          },
+        ],
+      },
+    );
     contactId = data.contact.contact_id;
     contactPersonId = data.contact.contact_persons[0].contact_person_id;
     expect(data.message).to.equal('The contact has been added.');

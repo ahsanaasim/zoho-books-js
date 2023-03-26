@@ -1,6 +1,6 @@
 export const ZohoConfig = {
-  rightClientId: '1000.ZUDLW74ODCL4B0MGHWHBCM8060DRFF',
-  rightClientSecret: 'bddccc1cbbabfe3db54114293144c58150603b3f24',
-  rightRefreshToken: '1000.614df12df5baa8f01416134c5821c9cf.68df2e24482290a40089b9718dd86b6c',
-  organizationId: '805466322',
+  rightClientId: '1000.IDM4LXNXIX0E0V7NFKQD63BXIRFC7Z',
+  rightClientSecret: 'ac567af4986bb8213e9cbd4818348e67e14fb51cc3',
+  rightRefreshToken: '1000.70017636e04669e220e6e7475874e502.4ece2c9b4cc9ca638a141b9362117c25',
+  organizationId: '805585953',
 };

@@ -46,7 +46,7 @@ export class Contacts {
     });
   }
 
-  public async post(token: string, data: any): Promise<IContactResponse> {
+  public async post(token: string, params: any, data: any): Promise<IContactResponse> {
     return new Promise((resolve, reject) => {
       AxiosRequest(
         {
@@ -54,7 +54,7 @@ export class Contacts {
           url: this.contactsUrl,
           method: AxiosMethods.post,
           contentType: AxiosContentTypes.json,
-          params: undefined,
+          params,
           body: data,
         },
         resolve,
