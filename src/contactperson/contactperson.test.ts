@@ -7,7 +7,7 @@ import { OAuth } from '../oauth/oauth';
 import { ContactPerson } from './contactperson';
 import { Contacts } from '../contact/contacts';
 import { IContactPersonResponse } from '../interfaces/IContactPerson';
-import { deleteContact } from '../contact/contacts.test';
+import { deleteContact } from '../contact/contact-delete.test';
 
 describe('Contact Person', () => {
   const rightClientId = ZohoConfig.rightClientId;

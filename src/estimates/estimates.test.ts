@@ -6,7 +6,7 @@ import { IRefreshToken } from '../interfaces/IRefreshToken';
 import { OAuth } from '../oauth/oauth';
 import { Estimates } from './estimates';
 import { Contacts } from '../contact/contacts';
-import { deleteContact } from '../contact/contacts.test';
+import { deleteContact } from '../contact/contact-delete.test';
 
 describe('Get All Estimates', function () {
   const rightClientId = ZohoConfig.rightClientId;
